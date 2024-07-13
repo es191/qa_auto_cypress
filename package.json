@@ -1,0 +1,37 @@
+{
+	"name": "qa_auto_cypress",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test:e2e:browser": "cypress open --config-file cypress.config.ts --spec 'cypress/e2e/**/*.spec.ts'",
+		"test:e2e:headless": "cypress run --config-file cypress.config.ts --spec 'cypress/e2e/**/*.spec.ts'"
+	},
+	"keywords": [
+		"Cypress",
+		"automation",
+		"QA"
+	],
+	"author": "Evgenii S",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@types/node": "^20.14.10",
+		"cypress": "^13.13.0",
+		"husky": "^9.0.11",
+		"lint-staged": "^15.2.7",
+		"prettier": "^3.3.2",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.3"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"src/**/*.{js,ts,jsx,tsx,json,css,scss,md}": [
+			"prettier --write",
+			"git add"
+		]
+	}
+}
