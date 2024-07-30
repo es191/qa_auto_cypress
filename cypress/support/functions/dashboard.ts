@@ -7,8 +7,13 @@ export const dashboard = {
 		cy.url().should('eq', d.data.url.admin);
 	},
 
+	goToPIM(): void {
+		cy.get(e.dashboardUI.leave).eq(1).click();
+		cy.url().should('eq', d.data.url.pim);
+	},
+
 	goToLeave(): void {
 		cy.get(e.dashboardUI.leave).eq(2).click();
-		cy.url().should('eq', d.data.url.leave);
+		cy.url().should('eq', d.data.url.pim);
 	},
 };

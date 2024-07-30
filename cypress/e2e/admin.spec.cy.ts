@@ -4,6 +4,7 @@ import { d } from '../fixtures';
 describe('Tests for admin part from the main menu', () => {
 	beforeEach(() => {
 		f.login_Admin.loginApp();
+		f.dashboard.goToAdmin();
 	});
 
 	it('TC:1 - Search for user ESS user', () => {
@@ -11,7 +12,6 @@ describe('Tests for admin part from the main menu', () => {
 		const empName = d.data.userRole.empNameEss;
 		const role = d.data.userRole.ESS;
 
-		f.dashboard.goToAdmin();
 		f.admin.searchForRole(username, empName, role);
 	});
 
@@ -20,7 +20,6 @@ describe('Tests for admin part from the main menu', () => {
 		const empName = d.data.userRole.empNameAdmin;
 		const role = d.data.userRole.admin;
 
-		f.dashboard.goToAdmin();
 		f.admin.searchForRole(username, empName, role);
 	});
 });

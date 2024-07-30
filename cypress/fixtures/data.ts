@@ -6,11 +6,14 @@ export const data = {
 		dashboard: `${base}/dashboard/index`,
 		admin: `${base}/admin/viewSystemUsers`,
 		leave: `${base}/leave/viewLeaveList`,
+		pim: `${base}/pim/viewEmployeeList`,
 	},
 	users: {
 		employeeNameESS: 'manda akhil use',
 		usernameAdmin: 'Admin',
 		usernameESS: 'FMLName',
+		empName: 'Tom',
+		empID: '36479',
 	},
 	userRole: {
 		admin: 'Admin',
