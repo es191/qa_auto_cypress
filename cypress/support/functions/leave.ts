@@ -2,7 +2,6 @@ import { d } from '../../fixtures';
 import { e } from '../elements';
 
 export const leave = {
-	//TODO find a user with some vacation
 	takeLeave(): void {
 		cy.get(e.leaveUI.assignLeave).eq(6).click();
 		cy.get(e.leaveUI.assignLeaveUI.title).should('exist');

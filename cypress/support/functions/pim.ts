@@ -1,5 +1,4 @@
 import { e } from '../elements';
-import { d } from '../../fixtures';
 
 export const pim = {
 	searchEmp(empName: string, id: string): void {

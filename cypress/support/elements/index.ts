@@ -4,6 +4,7 @@ import { loginUI } from './helpers/loginUI';
 import { leaveUI } from './helpers/leaveUI';
 import { sharedUI } from './sharedUI';
 import { pimUI } from './helpers/pimUI';
+import { timeUI } from './helpers/timeUI';
 
 export const e = {
 	adminUI,
@@ -12,4 +13,5 @@ export const e = {
 	leaveUI,
 	pimUI,
 	sharedUI,
+	timeUI,
 };
