@@ -3,11 +3,13 @@ import { dashboardUI } from './helpers/dashboardUI';
 import { loginUI } from './helpers/loginUI';
 import { leaveUI } from './helpers/leaveUI';
 import { sharedUI } from './sharedUI';
+import { pimUI } from './helpers/pimUI';
 
 export const e = {
 	adminUI,
 	dashboardUI,
 	loginUI,
 	leaveUI,
+	pimUI,
 	sharedUI,
 };
