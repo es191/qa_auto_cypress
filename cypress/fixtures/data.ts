@@ -1,12 +1,11 @@
-const base = 'https://opensource-demo.orangehrmlive.com/web/index.php';
-
 export const data = {
 	url: {
-		login: `${base}/auth/login`,
-		dashboard: `${base}/dashboard/index`,
-		admin: `${base}/admin/viewSystemUsers`,
-		leave: `${base}/leave/viewLeaveList`,
-		pim: `${base}/pim/viewEmployeeList`,
+		login: `${Cypress.env('BASE')}/auth/login`,
+		dashboard: `${Cypress.env('BASE')}/dashboard/index`,
+		admin: `${Cypress.env('BASE')}/admin/viewSystemUsers`,
+		leave: `${Cypress.env('BASE')}/leave/viewLeaveList`,
+		pim: `${Cypress.env('BASE')}/pim/viewEmployeeList`,
+		time: `${Cypress.env('BASE')}/time/viewEmployeeTimesheet`,
 	},
 	users: {
 		employeeNameESS: 'manda akhil use',

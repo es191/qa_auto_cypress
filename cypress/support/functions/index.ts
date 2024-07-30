@@ -3,6 +3,7 @@ import { dashboard } from './dashboard';
 import { leave } from './leave';
 import { admin } from './admin';
 import { pim } from './pim';
+import { time } from './time';
 
 export const f = {
 	admin,
@@ -10,4 +11,5 @@ export const f = {
 	login_Admin,
 	leave,
 	pim,
+	time,
 };
