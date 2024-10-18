@@ -4,5 +4,5 @@
 		"lib": ["es5", "dom"],
 		"types": ["cypress", "node"]
 	},
-	"include": ["**/*.ts", "cypress/support/Commands", "cypress/plugins/index.js"]
+	"include": ["**/*.ts", "cypress/support/Commands", "cypress/plugins/index.js", "cypress/fixtures/in.js"]
 }
