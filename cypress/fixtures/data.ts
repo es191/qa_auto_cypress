@@ -1,3 +1,5 @@
+import { custom } from '../functions/custom';
+
 export const data = {
 	url: {
 		login: `${Cypress.env('BASE')}/auth/login`,
@@ -6,6 +8,9 @@ export const data = {
 		leave: `${Cypress.env('BASE')}/leave/viewLeaveList`,
 		pim: `${Cypress.env('BASE')}/pim/viewEmployeeList`,
 		time: `${Cypress.env('BASE')}/time/viewEmployeeTimesheet`,
+
+		//API TESTING
+		listOfObjects: `${Cypress.env('BASE_API')}`,
 	},
 	users: {
 		employeeNameESS: 'manda akhil use',
@@ -33,5 +38,16 @@ export const data = {
 		matternityUS: 'US - Matternity',
 		personalUS: 'US - Personal',
 		vacationUS: 'US - Vacation',
+	},
+
+	//API TESTING
+	payloadAddRecord: {
+		name: custom.generateRandomString(),
+		data: {
+			year: 2019,
+			price: 1849.99,
+			'CPU model': 'Intel Core i9',
+			'Hard disk size': '1 TB',
+		},
 	},
 };
