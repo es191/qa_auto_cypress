@@ -4,7 +4,7 @@ import { UserRecord } from '../../functions/apiCalls';
 
 describe('Regression Tests For api.restful-api.dev', () => {
 	it('GET the list of all records', () => {
-		apiCalls.getListOfObjects().then((res: Cypress.Response<UserRecord>) => {
+		apiCalls.getListOfRecords().then((res: Cypress.Response<UserRecord>) => {
 			expect(res.status).to.eq(200);
 			expect(res.body).to.be.an('array');
 			expect(res.body[0]).to.have.property('id').that.is.a('string').and.not.empty;
@@ -13,7 +13,7 @@ describe('Regression Tests For api.restful-api.dev', () => {
 	});
 
 	it('GET single record', () => {
-		apiCalls.getSingleObject().then((res: Cypress.Response<UserRecord>) => {
+		apiCalls.getSingleRecord().then((res: Cypress.Response<UserRecord>) => {
 			expect(res.status).to.eq(200);
 			expect(res.body).to.have.property('id').that.is.a('string').and.not.empty;
 			expect(res.body).to.have.property('data').that.is.an('object');
@@ -21,8 +21,7 @@ describe('Regression Tests For api.restful-api.dev', () => {
 	});
 
 	it('POST add new record', () => {
-		apiCalls.postAddObject(data.payloadAddRecord).then((res: Cypress.Response<UserRecord>) => {
-			cy.log(data.payloadAddRecord.name);
+		apiCalls.postAddRecord(data.payloadAddRecord).then((res: Cypress.Response<UserRecord>) => {
 			expect(res.status).to.eq(200);
 			expect(res.body).to.have.property('createdAt');
 			expect(res.body.name).to.eq(data.payloadAddRecord.name);
@@ -31,8 +30,18 @@ describe('Regression Tests For api.restful-api.dev', () => {
 		});
 	});
 
+	it('PUT update current record', () => {
+		apiCalls.updateRecord(Cypress.env('id'), data.updateRecord).then((res: Cypress.Response<UserRecord>) => {
+			expect(res.status).to.eq(200);
+			expect(res.body).to.have.property('updatedAt');
+			expect(res.body.name).to.eq(data.updateRecord.name);
+			expect(res.body.data.year).to.eq(data.updateRecord.data.year);
+			expect(res.body.data.price).to.eq(data.updateRecord.data.price);
+		});
+	});
+
 	it('DELETE delete specific record', () => {
-		apiCalls.deleteObject(Cypress.env('id')).then((res: Cypress.Response<UserRecord>) => {
+		apiCalls.deleteRecord(Cypress.env('id')).then((res: Cypress.Response<UserRecord>) => {
 			console.log(JSON.stringify(res));
 			expect(res.status).to.eq(200);
 			expect(res.body).to.have.property('message').that.is.a('string').and.not.empty;

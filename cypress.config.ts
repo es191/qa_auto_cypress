@@ -11,6 +11,7 @@ export default defineConfig({
 		requestTimeout: 20000,
 		responseTimeout: 20000,
 		experimentalRunAllSpecs: true,
+		projectId: '1',
 	},
 	screenshotOnRunFailure: true,
 	video: false,

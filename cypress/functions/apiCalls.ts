@@ -1,5 +1,4 @@
 import { custom } from './custom';
-import { data } from '../fixtures/data';
 
 export interface UserRecord {
 	id: string;
@@ -13,7 +12,7 @@ export interface UserRecord {
 	};
 }
 
-export interface ObjectInput {
+export interface InputRecord {
 	name: string;
 	data: {
 		year: number;
@@ -25,50 +24,61 @@ export interface ObjectInput {
 }
 
 export const apiCalls = {
-	getListOfObjects: (): Cypress.Chainable<Cypress.Response<UserRecord>> => {
+	getListOfRecords: (): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy.request({
 			method: 'GET',
 			url: Cypress.env('BASE_API'),
 			headers: {
-				'User-Agent': 'PostmanRuntime/7.42.0',
+				'Content-Type': 'application/json',
 			},
 		});
 	},
 
-	getSingleObject: (): Cypress.Chainable<Cypress.Response<UserRecord>> => {
+	getSingleRecord: (): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		const id = custom.generateRandomNumber();
 		return cy.request({
 			method: 'GET',
 			url: `${Cypress.env('BASE_API')}/${id}`,
 			headers: {
-				'User-Agent': 'PostmanRuntime/7.42.0',
+				'Content-Type': 'application/json',
 			},
 		});
 	},
 
-	postAddObject: (payload: ObjectInput): Cypress.Chainable<Cypress.Response<UserRecord>> => {
+	postAddRecord: (payload: InputRecord): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy
 			.request({
 				method: 'POST',
 				url: Cypress.env('BASE_API'),
 				body: payload,
 				headers: {
-					'User-Agent': 'PostmanRuntime/7.42.0',
+					'Content-Type': 'application/json',
 				},
 			})
-			.then((res: Cypress.Response<any>) => {
+			.then((res: Cypress.Response<UserRecord>) => {
 				const idNewRecord = res.body.id;
 				Cypress.env('id', idNewRecord);
-				cy.log(`My id is: ${idNewRecord}`);
+				return res;
 			});
 	},
 
-	deleteObject: (id: string): Cypress.Chainable<Cypress.Response<UserRecord>> => {
+	updateRecord: (id: string, payload: InputRecord): Cypress.Chainable<Cypress.Response<UserRecord>> => {
+		return cy.request({
+			method: 'PUT',
+			url: `${Cypress.env('BASE_API')}/${id}`,
+			body: payload,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+	},
+
+	deleteRecord: (id: string): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy.request({
 			method: 'DELETE',
 			url: `${Cypress.env('BASE_API')}/${id}`,
 			headers: {
-				'User-Agent': 'PostmanRuntime/7.42.0',
+				'Content-Type': 'application/json',
 			},
 		});
 	},

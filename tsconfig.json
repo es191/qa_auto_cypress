@@ -2,7 +2,9 @@
 	"compilerOptions": {
 		"target": "es5",
 		"lib": ["es5", "dom"],
-		"types": ["cypress", "node"]
+		"types": ["cypress", "node"],
+		"baseUrl": "https://api.restful-api.dev'",
 	},
 	"include": ["**/*.ts", "cypress/support/Commands", "cypress/plugins/index.js", "cypress/fixtures/in.js"]
 }
+  

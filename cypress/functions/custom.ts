@@ -3,15 +3,14 @@ export const custom = {
 		return Math.floor(Math.random() * 10) + 1;
 	},
 
-	generateRandomString(): string {
-		const length = Math.floor(Math.random() * 11) + 5;
-		const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+	generateRandomString(length: number = 12) {
+		const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 		let result = '';
-
-		for (let i = 0; i < length; i++) {
-			const randomIndex = Math.floor(Math.random() * characters.length);
-			result += characters[randomIndex];
-		}
+		const randomArray = new Uint8Array(length);
+		crypto.getRandomValues(randomArray);
+		randomArray.forEach((number) => {
+			result += chars[number % chars.length];
+		});
 		return result;
 	},
 };
