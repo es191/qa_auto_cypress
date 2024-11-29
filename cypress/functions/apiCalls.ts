@@ -1,4 +1,5 @@
 import { custom } from './custom';
+import { data } from '../fixtures/data';
 
 export interface UserRecord {
 	id: string;
@@ -27,7 +28,7 @@ export const apiCalls = {
 	getListOfRecords: (): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy.request({
 			method: 'GET',
-			url: Cypress.env('BASE_API'),
+			url: data.BASE_URL,
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -38,7 +39,7 @@ export const apiCalls = {
 		const id = custom.generateRandomNumber();
 		return cy.request({
 			method: 'GET',
-			url: `${Cypress.env('BASE_API')}/${id}`,
+			url: `${data.BASE_URL}/${id}`,
 			headers: {
 				'Content-Type': 'application/json',
 			},
@@ -49,7 +50,7 @@ export const apiCalls = {
 		return cy
 			.request({
 				method: 'POST',
-				url: Cypress.env('BASE_API'),
+				url: data.BASE_URL,
 				body: payload,
 				headers: {
 					'Content-Type': 'application/json',
@@ -65,7 +66,7 @@ export const apiCalls = {
 	updateRecord: (id: string, payload: InputRecord): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy.request({
 			method: 'PUT',
-			url: `${Cypress.env('BASE_API')}/${id}`,
+			url: `${data.BASE_URL}/${id}`,
 			body: payload,
 			headers: {
 				'Content-Type': 'application/json',
@@ -76,7 +77,7 @@ export const apiCalls = {
 	deleteRecord: (id: string): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy.request({
 			method: 'DELETE',
-			url: `${Cypress.env('BASE_API')}/${id}`,
+			url: `${data.BASE_URL}/${id}`,
 			headers: {
 				'Content-Type': 'application/json',
 			},
