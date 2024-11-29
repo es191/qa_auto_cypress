@@ -1,6 +1,8 @@
 import { custom } from '../functions/custom';
 
 export const data = {
+	BASE_URL: 'https://api.restful-api.dev/objects',
+
 	payloadAddRecord: {
 		name: custom.generateRandomString(),
 		data: {
