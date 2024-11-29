@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"test:e2e:browser": "cypress open --config-file cypress.config.ts --spec 'cypress/e2e/**/*.spec.ts'",
-		"test:e2e:headless": "cypress run --config-file cypress.config.ts --spec 'cypress/e2e/**/*.spec.ts'"
+		"api:browser": "cypress open --config-file cypress.config.ts --spec 'cypress/e2e/api/regression.spec.cy.ts'",
+		"api:headless": "cypress run --config-file cypress.config.ts --spec 'cypress/e2e/api/regression.spec.cy.ts'"
 	},
 	"keywords": [
 		"Cypress",
@@ -16,6 +16,7 @@
 	"description": "",
 	"devDependencies": {
 		"@types/node": "^20.14.10",
+		"cross-env": "^7.0.3",
 		"cypress": "^13.13.0",
 		"husky": "^9.0.11",
 		"lint-staged": "^15.2.7",

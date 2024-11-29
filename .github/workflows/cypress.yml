@@ -27,4 +27,4 @@ jobs:
       - name: Run Cypress tests
         run: npx cypress run
         env:
-          CYPRESS_BASE_URL: 'https://opensource-demo.orangehrmlive.com/web/index.php'
+          CYPRESS_BASE_URL: 'https://api.restful-api.dev/objects'
