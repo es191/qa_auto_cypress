@@ -23,5 +23,9 @@ export const data = {
 				'Hard disk size': '2 TB',
 			},
 		},
+
+		patchRecord: {
+			name: `${custom.generateRandomString()}_Patched`,
+		},
 	},
 };

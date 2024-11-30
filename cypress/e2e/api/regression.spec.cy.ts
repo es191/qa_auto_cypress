@@ -42,9 +42,16 @@ describe('Regression Tests For api.restful-api.dev', () => {
 			});
 	});
 
+	it('PATCH update only name in record', () => {
+		apiCalls.patchRecord(Cypress.env('id'), data.payload.patchRecord).then((res: Cypress.Response<UserRecord>) => {
+			expect(res.status).to.eq(200);
+			expect(res.body).to.have.property('updatedAt');
+			expect(res.body.name).to.eq(data.payload.patchRecord.name);
+		});
+	});
+
 	it('DELETE delete specific record', () => {
 		apiCalls.deleteRecord(Cypress.env('id')).then((res: Cypress.Response<UserRecord>) => {
-			console.log(JSON.stringify(res));
 			expect(res.status).to.eq(200);
 			expect(res.body).to.have.property('message').that.is.a('string').and.not.empty;
 		});
