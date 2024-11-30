@@ -21,23 +21,25 @@ describe('Regression Tests For api.restful-api.dev', () => {
 	});
 
 	it('POST add new record', () => {
-		apiCalls.postAddRecord(data.payloadAddRecord).then((res: Cypress.Response<UserRecord>) => {
+		apiCalls.postAddRecord(data.payload.addRecord).then((res: Cypress.Response<UserRecord>) => {
 			expect(res.status).to.eq(200);
 			expect(res.body).to.have.property('createdAt');
-			expect(res.body.name).to.eq(data.payloadAddRecord.name);
-			expect(res.body.data.year).to.eq(data.payloadAddRecord.data.year);
-			expect(res.body.data.price).to.eq(data.payloadAddRecord.data.price);
+			expect(res.body.name).to.eq(data.payload.addRecord.name);
+			expect(res.body.data.year).to.eq(data.payload.addRecord.data.year);
+			expect(res.body.data.price).to.eq(data.payload.addRecord.data.price);
 		});
 	});
 
 	it('PUT update current record', () => {
-		apiCalls.updateRecord(Cypress.env('id'), data.updateRecord).then((res: Cypress.Response<UserRecord>) => {
-			expect(res.status).to.eq(200);
-			expect(res.body).to.have.property('updatedAt');
-			expect(res.body.name).to.eq(data.updateRecord.name);
-			expect(res.body.data.year).to.eq(data.updateRecord.data.year);
-			expect(res.body.data.price).to.eq(data.updateRecord.data.price);
-		});
+		apiCalls
+			.updateRecord(Cypress.env('id'), data.payload.updateRecord)
+			.then((res: Cypress.Response<UserRecord>) => {
+				expect(res.status).to.eq(200);
+				expect(res.body).to.have.property('updatedAt');
+				expect(res.body.name).to.eq(data.payload.updateRecord.name);
+				expect(res.body.data.year).to.eq(data.payload.updateRecord.data.year);
+				expect(res.body.data.price).to.eq(data.payload.updateRecord.data.price);
+			});
 	});
 
 	it('DELETE delete specific record', () => {
