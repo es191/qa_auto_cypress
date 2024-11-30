@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
-		"api:browser": "cypress open --config-file cypress.config.ts --spec 'cypress/e2e/api/regression.spec.cy.ts'",
+		"api:browser": "cypress open --config-file cypress.config.ts 'cypress/e2e/api/regression.spec.cy.ts'",
 		"api:headless": "cypress run --config-file cypress.config.ts --spec 'cypress/e2e/api/regression.spec.cy.ts'"
 	},
 	"keywords": [

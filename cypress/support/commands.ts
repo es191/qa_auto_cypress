@@ -23,7 +23,7 @@ Cypress.Commands.add('retryRequest', (options: Retryoptions) => {
 	const interval = options.interval || 1000;
 	const assertion = options.assertion;
 
-	function makeRequest(attempt = 0) {
+	function makeRequest(attempt = 0): void {
 		cy.wait(interval);
 		cy.request({
 			method: method,
@@ -44,4 +44,5 @@ Cypress.Commands.add('retryRequest', (options: Retryoptions) => {
 			}
 		});
 	}
+	makeRequest();
 });

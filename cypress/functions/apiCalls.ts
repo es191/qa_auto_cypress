@@ -15,7 +15,7 @@ export interface UserRecord {
 
 export interface InputRecord {
 	name: string;
-	data: {
+	data?: {
 		year: number;
 		price: number;
 		cpuModel?: string;
@@ -66,6 +66,17 @@ export const apiCalls = {
 	updateRecord: (id: string, payload: InputRecord): Cypress.Chainable<Cypress.Response<UserRecord>> => {
 		return cy.request({
 			method: 'PUT',
+			url: `${data.BASE_URL}/${id}`,
+			body: payload,
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+	},
+
+	patchRecord: (id: string, payload: InputRecord): Cypress.Chainable<Cypress.Response<UserRecord>> => {
+		return cy.request({
+			method: 'PATCH',
 			url: `${data.BASE_URL}/${id}`,
 			body: payload,
 			headers: {
